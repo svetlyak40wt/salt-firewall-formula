@@ -1,4 +1,4 @@
-{% if grains['os_family'] == 'Ubuntu' %}
+{% if grains['os'] == 'Ubuntu' %}
 
 ufw:
   pkg:

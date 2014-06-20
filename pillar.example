@@ -1,0 +1,19 @@
+firewall:
+  groups:
+    all: [clupea, salmon, skate, booka]
+    webservers: [clupea, salmon]
+
+  rules:
+    $all:
+      - port: 22 # ssh, accessable from any machine
+
+    $webservers:
+      - port: 80 # nginx, accessable from any machine
+
+    skate:
+      - port: 2003 # Graphite's carbon
+        from: $all
+
+    booka:
+      - port: 8000 # django devserver
+        from: [234.123.4.12, peter.example.com] # ips or hostnames could be listed as sources as well
